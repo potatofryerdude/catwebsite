@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Images</title> 
+    <link rel="stylesheet" href="main.css"> 
+</head>
+<body class="theme">
+<header>
+    <h1 class="main"> The Cat Community </h1> <!--Header and we made it big and with a very cool font which is again in main.css-->
+      <nav>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="cats.html">Cat Pics!</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+</header>
+<p class='intro'> Welcome! Here you can look at endless pictures of cats cus why not? More coming soon... </p>
+<section id="catSection"> <!--HTML element which will contain all of our Cat Image related stuff including the button-->
+    <img id="catImage" src="" alt="Random Cat Image"> 
+    <button class="buton3"onclick="fetchCatImage()">more catsssss</button> <!--This button will run the code for the function fetchCatImage when clicked-->
+    <script>  
+      const apiKey = "live_eYtE2I1ZybbYl3y8nPQr56xcfIkfYrKR3NhcRROyG1UADdZsqqb5f72TqqA1Sx4E" /* As you can see, I'm using the comment function for JavaScript. This is because I am using the script tag meaning that I am basically writing JavaScript in an HTML file. This is much simpler but its normally only used for smaller scale projects*/
+      function fetchCatImage() {
+        fetch("https://api.thecatapi.com/v1/images/search", { 
+          headers: {
+            "x-api-key": apiKey 
+          }
+        })
+          .then(response => response.json())
+          .then(data => {
+            const catImageElement = document.getElementById('catImage');
+            catImageElement.src = data[0].url;
+          })
+          .catch(error => {
+            console.error('Error fetching cat image:', error);
+          });
+        }
+      
+      fetchCatImage();
+    </script>
+  </section>
