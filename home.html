@@ -7,48 +7,32 @@
   <title>We Love Cats</title> <!--This is like the website title which will be displayed at the tab, for example how Schoology home is called Home | Schoology. -->
   <link rel="stylesheet" href="main.css"> <!--This connects the HTML to our CSS page so now we have a stylesheet, meaning that we can use the CSS formating which applies the changes to HTML as if they were the same file, except its a completely different language-->
 </head>
-  <body class="light-theme"> <!--This changes the backgroudn color to the color that we put in our main.css-->
+  <body class="theme"> <!--This changes the backgroudn color to the color that we put in our main.css-->
+  <header>
   <h1 class="main"> The Cat Community </h1> <!--Header and we made it big and with a very cool font which is again in main.css-->
-  <p class="intro"> Welcome to the largest community of cat lovers (that I am aware of), we all know that cats are the best animal in the world (altough all of them are amazing except pigeons) so lets just be nice and have a great time. Have fun!</p>
+    <nav>
+      <ul> <!--Even though I used a list format, through CSS, I managed to seperate them and make it look decent enough for a banner type thing-->
+        <li><a href="home.html">Home</a></li> 
+        <li><a href="cats.html">Cat Pics!</a></li> <!--Here I can just add the link to my other file and when the user clicks it, it will take him to another page on my website with everything on the file-->
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+  <p class="intro"> Welcome to the largest community of cat lovers (totally), we all know that cats are the best animal in the world (altough all of them are amazing except pigeons) so lets just be nice and have a great time. Have fun!</p>
   <img class="intro-pic" src="https://i.postimg.cc/VLXVXsk9/gauchoisdeadintro.jpg" alt="Uh oh a pigeon must've broken your computer <:(" /> <!--I decided to add some images because cats are the best and they should be everywhere. I have an alt attribute in case the image doesnt load. I also put it into a class so that I can group all of the the images at the beginning in one group and make them the same size.-->
   <img class="intro-pic" src="https://t4.ftcdn.net/jpg/05/62/99/31/360_F_562993122_e7pGkeY8yMfXJcRmclsoIjtOoVDDgIlh.jpg" alt="Uh oh a pigeon must've broken your computer <:(" />
   <img class="small-intro-pic" src="https://images.ctfassets.net/ub3bwfd53mwy/5WFv6lEUb1e6kWeP06CLXr/acd328417f24786af98b1750d90813de/4_Image.jpg?w=750" alt="Uh oh a pigeon must've broken your computer <:(" />
   <h2 class="sub">Here's links to some fun stuff!</h2>
-  <div class = "container"> <!--I have an unordered list and a division tag in order to group these together-->
+<div class = "container"> <!--I have an unordered list and a division tag in order to group these together-->
     <ul> 
-      <li>Ball, Cucumber, Cat! (the BEST version of rock paper scissors)   <button class="buton"><a style="text-decoration: none;" href ="#trinketSection">  Play Here! </a> </li> <!--Here I have my list and a button! I was surprised that I could fit the button inside my list. Hopefully doesnt cause me much trouble.-->
-      <li>Random Cat Images!!!   <button class="buton2"><a style="text-decoration: none;" href ="#catSection">  Get smart! </a> </li>
+      <li>Ball, Cucumber, Cat! (the BEST version of rock paper scissors)   <button class="buton"><a style="text-decoration: none;" href ="cats.html">  Play Here! </a> </li> <!--Here I have my list and a button! I was surprised that I could fit the button inside my list. Hopefully doesnt cause me much trouble.-->
+      <li>Random Cat Images!!!   <button class="buton2"><a style="text-decoration: none;" href ="cats.html">  Get smart! </a> </li>
     </ul> 
 </div>
-  <script src="app.js"></script> <!--Here we are connecting our HTML file with the JavaScript file, just like we did with CSS-->
+  <script src="app.js"></script> <!--Here we are connecting our HTML file with the JavaScript file, just like we did with CSS. However, for now, I did not use any Javascript because I wanted to focus more on html and css and then learn more JavaScript later.-->
   <noscript>You need to enable JavaScript to view the full site.</noscript> <!--this is an example of fault tolerance so that my code can detect and plan for when a feature isn't supported or available-->
-
   <section id="trinketSection">
     <p class="work"> Work in progress... </p>
   </section>
-  <section id="catSection"> <!--HTML element which will contain all of our Cat Image related stuff including the button-->
-    <img id="catImage" src="" alt="Random Cat Image"> 
-    <button class="buton3"onclick="fetchCatImage()">more catsssss</button>
-    <script>
-      const apiKey = "live_eYtE2I1ZybbYl3y8nPQr56xcfIkfYrKR3NhcRROyG1UADdZsqqb5f72TqqA1Sx4E"
-      function fetchCatImage() {
-        fetch("https://api.thecatapi.com/v1/images/search", {
-          headers: {
-            "x-api-key": apiKey
-          }
-        })
-          .then(response => response.json())
-          .then(data => {
-            const catImageElement = document.getElementById('catImage');
-            catImageElement.src = data[0].url;
-          })
-          .catch(error => {
-            console.error('Error fetching cat image:', error);
-          });
-      }
-      
-      fetchCatImage();
-    </script>
-  </section>
 </body>
-</html>
+</html> 
