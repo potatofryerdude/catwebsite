@@ -20,22 +20,22 @@
 </header>
 <p class='intro'> Welcome! Here you can look at endless pictures of cats cus why not? More coming soon... </p>
 <section id="catSection"> <!--HTML element which will contain all of our Cat Image related stuff including the button-->
-    <img id="catImage" src="" alt="Random Cat Image"> 
+    <img id="catImage" src="" alt="Random Cat Image">  <!--Another HTML placeholder for where the cat image will go. At first, it is empty as we don't know the cat API yet.-->
     <button class="buton3"onclick="fetchCatImage()">more catsssss</button> <!--This button will run the code for the function fetchCatImage when clicked-->
-    <script>  
-      const apiKey = "live_eYtE2I1ZybbYl3y8nPQr56xcfIkfYrKR3NhcRROyG1UADdZsqqb5f72TqqA1Sx4E" /* As you can see, I'm using the comment function for JavaScript. This is because I am using the script tag meaning that I am basically writing JavaScript in an HTML file. This is much simpler but its normally only used for smaller scale projects*/
-      function fetchCatImage() {
-        fetch("https://api.thecatapi.com/v1/images/search", { 
+    <script>  /* As you can see, I'm using the comment function for JavaScript. This is because I am using the script tag meaning that I am basically writing JavaScript in an HTML file. This is much simpler but its normally only used for smaller scale projects*/
+      const apiKey = "live_eYtE2I1ZybbYl3y8nPQr56xcfIkfYrKR3NhcRROyG1UADdZsqqb5f72TqqA1Sx4E" /*This variable is so that the API is authenticated as I got this key from the API website by signing in */
+      function fetchCatImage() { /*This function will run when the button is pressed and all the JavaScript code neccesary for displaying the cat images is here. */
+        fetch("https://api.thecatapi.com/v1/images/search", {  /* fetch() sends a request to a server, in this case the API which is why its inside the brackets and then loads the information that is returned, which is what we do later on*/
           headers: {
             "x-api-key": apiKey 
           }
         })
-          .then(response => response.json())
-          .then(data => {
+          .then(response => response.json()) /* As mentioned before (maybe? I lost track at this point), this converts the API info into the JSON format so that the data is more effectively managed*/
+          .then(data => { /*The program then selects the image element with the ID "catImage" and sets its source (URL) to the URL of the fetched cat image. Thus, the image is updated everytime */
             const catImageElement = document.getElementById('catImage');
             catImageElement.src = data[0].url;
           })
-          .catch(error => {
+          .catch(error => { /*This handles errors in the image or fetch request and sends this error message to the console for bug checks and stuff */
             console.error('Error fetching cat image:', error);
           });
         }
